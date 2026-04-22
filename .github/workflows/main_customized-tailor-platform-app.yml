@@ -11,19 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
+          node-version: "22"
 
-      - name: Verify repo contents
+      - name: Show repo files
         run: |
           pwd
           ls -la
           test -f package.json && echo "package.json found"
+          test -f package-lock.json && echo "package-lock.json found"
 
       - name: Install dependencies
         run: npm ci
@@ -33,7 +34,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      - name: Build app
+      - name: Build application
         run: npm run build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -42,10 +43,10 @@ jobs:
           RAZORPAY_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
 
-      - name: Zip artifact
+      - name: Archive app for deployment
         run: zip -r release.zip . -x ".git/*" "node_modules/*"
 
-      - name: Upload artifact
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
@@ -58,12 +59,12 @@ jobs:
       name: Production
 
     steps:
-      - name: Download artifact
+      - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: node-app
 
-      - name: Unzip artifact
+      - name: Extract build artifact
         run: unzip release.zip
 
       - name: Deploy to Azure Web App
@@ -71,5 +72,3 @@ jobs:
         with:
           app-name: customized-tailor-platform-app
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-
-          
