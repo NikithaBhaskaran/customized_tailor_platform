@@ -1,0 +1,224 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/api/auth/[...nextauth]",
+      "regex": "^/api/auth/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPnextauth": "nxtPnextauth"
+      },
+      "namedRegex": "^/api/auth/(?<nxtPnextauth>.+?)(?:/)?$"
+    },
+    {
+      "page": "/api/customer/quotes/[orderId]/action",
+      "regex": "^/api/customer/quotes/([^/]+?)/action(?:/)?$",
+      "routeKeys": {
+        "nxtPorderId": "nxtPorderId"
+      },
+      "namedRegex": "^/api/customer/quotes/(?<nxtPorderId>[^/]+?)/action(?:/)?$"
+    },
+    {
+      "page": "/api/orders/[orderId]/measurements",
+      "regex": "^/api/orders/([^/]+?)/measurements(?:/)?$",
+      "routeKeys": {
+        "nxtPorderId": "nxtPorderId"
+      },
+      "namedRegex": "^/api/orders/(?<nxtPorderId>[^/]+?)/measurements(?:/)?$"
+    },
+    {
+      "page": "/api/tailor/orders/[orderId]/action",
+      "regex": "^/api/tailor/orders/([^/]+?)/action(?:/)?$",
+      "routeKeys": {
+        "nxtPorderId": "nxtPorderId"
+      },
+      "namedRegex": "^/api/tailor/orders/(?<nxtPorderId>[^/]+?)/action(?:/)?$"
+    },
+    {
+      "page": "/api/tailor/orders/[orderId]/progress",
+      "regex": "^/api/tailor/orders/([^/]+?)/progress(?:/)?$",
+      "routeKeys": {
+        "nxtPorderId": "nxtPorderId"
+      },
+      "namedRegex": "^/api/tailor/orders/(?<nxtPorderId>[^/]+?)/progress(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/api/auth/register",
+      "regex": "^/api/auth/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/register(?:/)?$"
+    },
+    {
+      "page": "/api/costumes",
+      "regex": "^/api/costumes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/costumes(?:/)?$"
+    },
+    {
+      "page": "/api/customer/quotes",
+      "regex": "^/api/customer/quotes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/customer/quotes(?:/)?$"
+    },
+    {
+      "page": "/api/draft-orders",
+      "regex": "^/api/draft\\-orders(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/draft\\-orders(?:/)?$"
+    },
+    {
+      "page": "/api/health",
+      "regex": "^/api/health(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/health(?:/)?$"
+    },
+    {
+      "page": "/api/orders/my",
+      "regex": "^/api/orders/my(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/orders/my(?:/)?$"
+    },
+    {
+      "page": "/api/orders/submit",
+      "regex": "^/api/orders/submit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/orders/submit(?:/)?$"
+    },
+    {
+      "page": "/api/payments/create-order",
+      "regex": "^/api/payments/create\\-order(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/payments/create\\-order(?:/)?$"
+    },
+    {
+      "page": "/api/payments/failure",
+      "regex": "^/api/payments/failure(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/payments/failure(?:/)?$"
+    },
+    {
+      "page": "/api/payments/verify",
+      "regex": "^/api/payments/verify(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/payments/verify(?:/)?$"
+    },
+    {
+      "page": "/api/tailor/orders",
+      "regex": "^/api/tailor/orders(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/tailor/orders(?:/)?$"
+    },
+    {
+      "page": "/catalog",
+      "regex": "^/catalog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/catalog(?:/)?$"
+    },
+    {
+      "page": "/customer/dashboard",
+      "regex": "^/customer/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/customer/dashboard(?:/)?$"
+    },
+    {
+      "page": "/customer/measurements",
+      "regex": "^/customer/measurements(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/customer/measurements(?:/)?$"
+    },
+    {
+      "page": "/customer/quotes",
+      "regex": "^/customer/quotes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/customer/quotes(?:/)?$"
+    },
+    {
+      "page": "/customize",
+      "regex": "^/customize(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/customize(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/tailor/dashboard",
+      "regex": "^/tailor/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/tailor/dashboard(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}
