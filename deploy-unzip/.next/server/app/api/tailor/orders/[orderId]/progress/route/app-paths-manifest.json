@@ -1,3 +1,0 @@
-{
-  "/api/tailor/orders/[orderId]/progress/route": "app/api/tailor/orders/[orderId]/progress/route.js"
-}
