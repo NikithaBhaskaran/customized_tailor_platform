@@ -1,4 +1,4 @@
-name: Deploy Next.js to Azure
+name: Deploy Next.js to Azure Web App
 
 on:
   push:
@@ -9,23 +9,28 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      id-token: write
+      contents: read
 
-      - name: Setup Node
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm ci
 
-      - name: Generate Prisma
+      - name: Generate Prisma client
         run: npx prisma generate
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      - name: Build
+      - name: Build application
         run: npm run build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -41,8 +46,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2095FF3E020640D88D51F143D5232F02 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5E08BF1D903844D6B49AD921A61D9D55 }}
 
-      - name: Deploy
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: customized-tailor-platform-app
+          slot-name: Production
           package: .
